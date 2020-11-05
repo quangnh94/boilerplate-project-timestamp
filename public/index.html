@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>API: Timestamp microservice</title>
+  <style>
+    html {
+      max-width: 48em;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>Example usage</h2>
+  <code>https://boilerplate-project-timestamp.quangnguyn9.repl.co/time?timestamp=December%2015,%202015</code><br>
+  <code>https://boilerplate-project-timestamp.quangnguyn9.repl.co/time?timestamp=1450137600</code>
+
+  <h2>Example output</h2>
+  <code>
+      {
+        "unix": 1450137600,
+        "natural": "December 15, 2015"
+      }
+  </code>
+  <script>
+    const responseToJson = response => response.json()
+    const logResult = result => console.log(result)
+
+    fetch('/time?timestamp=1450137600')
+      .then(responseToJson)
+      .then(logResult)
+
+    fetch('/time?timestamp=December%2015,%202015')
+      .then(responseToJson)
+      .then(logResult)
+
+    fetch('/time?timestamp=Random')
+      .then(responseToJson)
+      .then(logResult)
+  </script>
+</body>
